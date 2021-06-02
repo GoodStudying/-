@@ -103,7 +103,7 @@ function szsp(timeout = 0) {
 let url = {
         url : 'https://api-9f9d25.sz365.cn/api/virtual_currency_v2/reward',
         headers : JSON.parse($.getdata('szhd')),
-        body : `type=203`,}
+        body : `type=205`,}
       $.post(url, async (err, resp, data) => {
         try {
            
@@ -113,7 +113,7 @@ let url = {
 }
 if(result.code == 400){
         console.log('闪挣小视频回执:失败🚫 '+result.message)}
-await $.wait(3000);
+await $.wait(60000);
 await szyx()
         } catch (e) {
           //$.logErr(e, resp);
@@ -131,13 +131,14 @@ function szyx(timeout = 0) {
 let url = {
         url : 'https://api-9f9d25.sz365.cn/api/virtual_currency_v2/reward',
         headers : JSON.parse($.getdata('szhd')),
-        body :  `type=205`,}
+        body :  `type=203`,}
       $.post(url, async (err, resp, data) => {
         try {
            
     const result = JSON.parse(data)
         if(result.code == 0){
         console.log('闪挣小游戏回执:成功🌝 '+result.message)
+        await $.wait(60000);
 }
 if(result.code == 400){
         console.log('闪挣小游戏回执:失败🚫 '+result.mesaage)}
